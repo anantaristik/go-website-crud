@@ -28,7 +28,11 @@ func main() {
 	http.HandleFunc("/products/edit", productcontroller.Edit)
 	http.HandleFunc("/products/delete", productcontroller.Delete)
 
+	// Favicon
+	http.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "favicon.ico")
+	})
+
 	log.Println("Starting server on port 8081...")
 	http.ListenAndServe(":8081", nil)
-
 }
